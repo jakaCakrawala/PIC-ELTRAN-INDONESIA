@@ -1,0 +1,59 @@
+<?php
+use Restserver\Libraries\REST_Controller;
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH . 'libraries/REST_Controller.php';
+require APPPATH . 'libraries/Format.php';
+
+class Chassis extends CI_Controller {
+
+
+	use REST_Controller {
+        REST_Controller::__construct as private __resTraitConstruct;
+    }
+
+    public function __construct()
+    {
+    	parent::__construct();
+    	$this->__resTraitConstruct();
+        $this->load->model('Chassis_m');
+        $this->load->model('Content_m');
+        $this->load->model('Content_history_m');
+        $this->load->model('Gps_m');
+        $this->load->model('Gps_history_m');
+        $this->load->library('session');
+
+    }
+
+	public function chassis_get($id)
+    {
+
+       $query =  'SELECT  chassis.assets_id_chassis,chassis.code_train,chassis.code_carriage,
+                  content.train_name,content.origin,content.destinantion,content.announcement,content.tag_rear,content.tag_front
+                  FROM chassis
+                  JOIN content  ON chassis.assets_id_chassis = content.assets_id_chassis
+                  WHERE chassis.assets_id_chassis = "'.$id.'"'; 
+       $getData = $this->Chassis_m->get_by_query($query);
+
+       $this->response(
+        array( "result" => $getData, 200)
+       );
+
+       if (!empty($getData))
+        {
+            $this->set_response($getData, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+        }
+        else
+        {
+            $this->set_response([
+                    'status' => FALSE,
+                    'message' => 'User could not be found'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
+        
+
+    }
+}
+
+/* End of file Chassis.php */
+/* Location: ./application/controllers/api/Chassis.php */

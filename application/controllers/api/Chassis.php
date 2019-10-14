@@ -25,7 +25,11 @@ class Chassis extends CI_Controller {
 
     }
 
+<<<<<<< HEAD
 	 public function chassis_get($id)
+=======
+	public function chassis_get($id)
+>>>>>>> 2fab5183c66cdd1e494a224db89964e8f4e12179
     {
 
        $query =  'SELECT  chassis.assets_id_chassis,chassis.code_train,chassis.code_carriage,
@@ -53,6 +57,7 @@ class Chassis extends CI_Controller {
         
 
     }
+<<<<<<< HEAD
 
     public function postChassis_post()
     {
@@ -77,6 +82,8 @@ class Chassis extends CI_Controller {
         // $this->set_response($message, 201); // CREATED (201) being the HTTP response code
     }
     
+=======
+>>>>>>> 2fab5183c66cdd1e494a224db89964e8f4e12179
 }
 
 /* End of file Chassis.php */

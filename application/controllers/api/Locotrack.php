@@ -1,7 +1,7 @@
 <?php
 use Restserver\Libraries\REST_Controller;
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+// data Loco track
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 class Locotrack extends CI_Controller {
@@ -39,7 +39,7 @@ class Locotrack extends CI_Controller {
         }
         
     }
-    public function locotrackhealty_get()
+    public function locotrackall_gethealty_get()
     {
     	$getData = $this->Locotrackhealty_m->get();
 

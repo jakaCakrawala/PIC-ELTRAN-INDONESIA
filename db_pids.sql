@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 13, 2019 at 08:27 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Host: localhost
+-- Generation Time: Nov 15, 2019 at 02:40 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -158,6 +158,13 @@ CREATE TABLE `locotrackhealty` (
   `intervalrun` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `locotrackhealty`
+--
+
+INSERT INTO `locotrackhealty` (`id`, `Locoid`, `Firm`, `Rtc`, `Ymd`, `Hms`, `Lat`, `Long`, `Gps`, `Satellite`, `Conn`, `Cpin`, `Csq`, `Creg`, `Network`, `Sd`, `temp`, `apn`, `intervalrun`) VALUES
+(4, '', '', '', '0000-00-00', '2019-11-15 02:38:33', '', '1', '1', '1', '1', '1', 1, '1', '1', '1', '1', '1', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -175,6 +182,58 @@ CREATE TABLE `locotracklocomotives` (
   `L_HEADING` int(20) DEFAULT NULL,
   `L_ENGINE` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locotrack_sms`
+--
+
+CREATE TABLE `locotrack_sms` (
+  `id` int(11) NOT NULL,
+  `subtopik` varchar(300) NOT NULL,
+  `status` varchar(300) NOT NULL,
+  `idloc` varchar(300) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `A` varchar(300) NOT NULL,
+  `C` varchar(300) NOT NULL,
+  `D` varchar(300) NOT NULL,
+  `E` varchar(300) NOT NULL,
+  `F` varchar(300) NOT NULL,
+  `G` varchar(300) NOT NULL,
+  `H` varchar(300) NOT NULL,
+  `J` varchar(300) NOT NULL,
+  `N` varchar(300) NOT NULL,
+  `GP` varchar(300) NOT NULL,
+  `EN` varchar(300) NOT NULL,
+  `SQ` varchar(300) NOT NULL,
+  `apn` varchar(300) NOT NULL,
+  `nogsm` varchar(300) NOT NULL,
+  `interval` int(22) DEFAULT NULL,
+  `ip` varchar(300) NOT NULL,
+  `port` varchar(300) NOT NULL,
+  `user` varchar(300) NOT NULL,
+  `pass` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `locotrack_sms`
+--
+
+INSERT INTO `locotrack_sms` (`id`, `subtopik`, `status`, `idloc`, `datetime`, `A`, `C`, `D`, `E`, `F`, `G`, `H`, `J`, `N`, `GP`, `EN`, `SQ`, `apn`, `nogsm`, `interval`, `ip`, `port`, `user`, `pass`) VALUES
+(1, 'publishList', 'success', 'K001', '2019-11-16 00:00:00', 'UNKNOWN', 'ptkai', 'null', 'null', '001 SEND', '001 LOG', 'Y', '3', '103.54.225.241', 'A9 NE0', '1', '14 NOT ACT 72H', '', '', 0, '', '', '', ''),
+(2, 'listIdloc', 'success', 'K001', '2019-11-16 00:00:00', 'UNKNOWN', 'ptkai', 'null', 'null', '001 SEND', '001 LOG', 'Y', '3', '103.54.225.241', 'A9 NE0', '1', '14 NOT ACT 72H', '', '', 0, '', '', '', ''),
+(3, 'publishApn', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', 'ptkai', '', 0, '', '', '', ''),
+(4, 'apnIdloc', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', 'ptkai', '', 0, '', '', '', ''),
+(5, 'publishGateway', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', 'ptkai', '08123456', 0, '', '', '', ''),
+(6, 'intervalRunningIdloc', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '08123', 5, '', '', '', ''),
+(7, 'publishIntervalRunning', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 5, '', '', '', ''),
+(8, 'publishIp', 'success', 'K001', '2019-11-11 00:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '103.54.225.241', '1883', 'iotkai2019', 'iot123456'),
+(9, 'ipIdloc', 'success', 'K001', '2019-11-11 00:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '103.54.225.241', '1883', 'iotkai2019', 'iot123456'),
+(10, 'restartIdloc', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '', ''),
+(11, 'intervalIdleIdloc', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 60, '', '', '', ''),
+(12, 'publishIntervalIdle', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 60, '', '', '', ''),
+(13, 'gatewayIdloc', 'success', 'K001', '2019-07-02 15:00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '08123456', NULL, '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -227,6 +286,12 @@ ALTER TABLE `locotracklocomotives`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `locotrack_sms`
+--
+ALTER TABLE `locotrack_sms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -252,13 +317,19 @@ ALTER TABLE `gps_history`
 -- AUTO_INCREMENT for table `locotrackhealty`
 --
 ALTER TABLE `locotrackhealty`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `locotracklocomotives`
 --
 ALTER TABLE `locotracklocomotives`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `locotrack_sms`
+--
+ALTER TABLE `locotrack_sms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

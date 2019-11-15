@@ -24,12 +24,11 @@ class ELTRAN_Model extends CI_Model {
 	}
 
 
-	public function get_select_where_order($select, $where , $group , $single = false)
+	public function get_select_where_order($select, $where , $single = false)
 	{
 	
 		$this->db->select($select);
 		$this->db->where($where);
-		$this->db->group_by($group);
 		return $this->get(NULL, $single);
 	
 	}
